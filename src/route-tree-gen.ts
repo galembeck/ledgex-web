@@ -9,27 +9,76 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from "./pages/__root"
+import { Route as PublicLayoutRouteImport } from "./pages/_public/layout"
+import { Route as PublicIndexRouteImport } from "./pages/_public/index"
 
-export interface FileRoutesByFullPath {}
-export interface FileRoutesByTo {}
+const PublicLayoutRoute = PublicLayoutRouteImport.update({
+  id: "/_public",
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicIndexRoute = PublicIndexRouteImport.update({
+  id: "/",
+  path: "/",
+  getParentRoute: () => PublicLayoutRoute,
+} as any)
+
+export interface FileRoutesByFullPath {
+  "/": typeof PublicIndexRoute
+}
+export interface FileRoutesByTo {
+  "/": typeof PublicIndexRoute
+}
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  "/_public": typeof PublicLayoutRouteWithChildren
+  "/_public/": typeof PublicIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: never
+  fullPaths: "/"
   fileRoutesByTo: FileRoutesByTo
-  to: never
-  id: "__root__"
+  to: "/"
+  id: "__root__" | "/_public" | "/_public/"
   fileRoutesById: FileRoutesById
 }
-export interface RootRouteChildren {}
-
-declare module "@tanstack/react-router" {
-  interface FileRoutesByPath {}
+export interface RootRouteChildren {
+  PublicLayoutRoute: typeof PublicLayoutRouteWithChildren
 }
 
-const rootRouteChildren: RootRouteChildren = {}
+declare module "@tanstack/react-router" {
+  interface FileRoutesByPath {
+    "/_public": {
+      id: "/_public"
+      path: ""
+      fullPath: "/"
+      preLoaderRoute: typeof PublicLayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/_public/": {
+      id: "/_public/"
+      path: "/"
+      fullPath: "/"
+      preLoaderRoute: typeof PublicIndexRouteImport
+      parentRoute: typeof PublicLayoutRoute
+    }
+  }
+}
+
+interface PublicLayoutRouteChildren {
+  PublicIndexRoute: typeof PublicIndexRoute
+}
+
+const PublicLayoutRouteChildren: PublicLayoutRouteChildren = {
+  PublicIndexRoute: PublicIndexRoute,
+}
+
+const PublicLayoutRouteWithChildren = PublicLayoutRoute._addFileChildren(
+  PublicLayoutRouteChildren,
+)
+
+const rootRouteChildren: RootRouteChildren = {
+  PublicLayoutRoute: PublicLayoutRouteWithChildren,
+}
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
