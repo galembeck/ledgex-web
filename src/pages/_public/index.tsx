@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { IntroSection } from "./~components/-intro-section";
 
 export const Route = createFileRoute("/_public/")({
   component: LandingPage,
@@ -7,7 +8,7 @@ export const Route = createFileRoute("/_public/")({
 function LandingPage() {
   return (
     <main>
-      <h1>LedgeX</h1>
+      <IntroSection />
     </main>
   );
 }
