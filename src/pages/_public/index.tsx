@@ -8,6 +8,9 @@ import { TestimonialsSection } from "./~components/-testimonials-section";
 
 export const Route = createFileRoute("/_public/")({
   component: LandingPage,
+  head: () => ({
+    meta: [{ title: "LedgeX | Financial Intelligence Powered by AI" }],
+  }),
 });
 
 function LandingPage() {
