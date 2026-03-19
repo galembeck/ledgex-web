@@ -1,4 +1,5 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 
 export const Route = createFileRoute("/_public")({
@@ -11,6 +12,8 @@ function PublicLayout() {
       <Navbar />
 
       <Outlet />
+
+      <Footer />
     </main>
   );
 }
