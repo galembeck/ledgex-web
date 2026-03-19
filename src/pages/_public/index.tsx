@@ -3,6 +3,7 @@ import { FeaturesSection } from "./~components/-features-section";
 import { HowItWorksSection } from "./~components/-how-it-works-section";
 import { IntroSection } from "./~components/-intro-section";
 import { LogoCloud } from "./~components/-logo-cloud";
+import { StatsSection } from "./~components/-stats-section";
 
 export const Route = createFileRoute("/_public/")({
   component: LandingPage,
@@ -15,6 +16,7 @@ function LandingPage() {
       <LogoCloud />
       <FeaturesSection />
       <HowItWorksSection />
+      <StatsSection />
     </main>
   );
 }
