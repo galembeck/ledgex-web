@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { FeaturesSection } from "./~components/-features-section";
+import { HowItWorksSection } from "./~components/-how-it-works-section";
 import { IntroSection } from "./~components/-intro-section";
 import { LogoCloud } from "./~components/-logo-cloud";
 
@@ -13,6 +14,7 @@ function LandingPage() {
       <IntroSection />
       <LogoCloud />
       <FeaturesSection />
+      <HowItWorksSection />
     </main>
   );
 }
