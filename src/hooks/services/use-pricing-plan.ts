@@ -3,7 +3,11 @@ import { pricingPlanModule } from "@/api/http/routes/pricing-plan";
 import type { PricingPlan } from "@/types/services/pricing-plan";
 
 export function usePricingPlan(pricingPlanId?: string) {
-  const { data: pricingPlans, isLoading } = useQuery({
+  const {
+    data: pricingPlans,
+    isLoading,
+    error: pricingPlansError,
+  } = useQuery({
     queryKey: ["pricing-plans", "list"],
     queryFn: async () => {
       return await pricingPlanModule.list();
@@ -36,6 +40,7 @@ export function usePricingPlan(pricingPlanId?: string) {
   return {
     pricingPlans,
     isLoading,
+    pricingPlansError,
 
     pricingPlan,
     isPricingPlanLoading,
