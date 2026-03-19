@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { FAQSection } from "./~components/-faq-section";
 import { FeaturesSection } from "./~components/-features-section";
 import { HowItWorksSection } from "./~components/-how-it-works-section";
 import { IntroSection } from "./~components/-intro-section";
@@ -24,6 +25,7 @@ function LandingPage() {
       <StatsSection />
       <TestimonialsSection />
       <PricingSection />
+      <FAQSection />
     </main>
   );
 }
