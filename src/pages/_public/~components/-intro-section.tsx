@@ -82,7 +82,7 @@ export function IntroSection() {
 
         <motion.div
           animate={{ opacity: 1, y: 0 }}
-          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          className="mt-10 flex items-center justify-center gap-4 sm:flex-row"
           initial={{ opacity: 0, y: 20 }}
           transition={{ delay: 0.7, duration: 0.5 }}
         >
