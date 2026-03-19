@@ -1,0 +1,22 @@
+import type { ProfileType } from "../enums/profile-type";
+
+export interface User {
+  id: string;
+
+  // Personal Information
+  name: string;
+  email: string;
+  document: string;
+  cellphone: string;
+
+  profileType: ProfileType;
+
+  createdAt: string;
+  lastAccessAt?: string;
+}
+
+export interface UpdateUserData {
+  // Personal Information
+  name?: string;
+  email?: string;
+}

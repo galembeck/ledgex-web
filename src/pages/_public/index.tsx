@@ -3,6 +3,7 @@ import { FeaturesSection } from "./~components/-features-section";
 import { HowItWorksSection } from "./~components/-how-it-works-section";
 import { IntroSection } from "./~components/-intro-section";
 import { LogoCloud } from "./~components/-logo-cloud";
+import { PricingSection } from "./~components/-pricing-section";
 import { StatsSection } from "./~components/-stats-section";
 import { TestimonialsSection } from "./~components/-testimonials-section";
 
@@ -22,6 +23,7 @@ function LandingPage() {
       <HowItWorksSection />
       <StatsSection />
       <TestimonialsSection />
+      <PricingSection />
     </main>
   );
 }
