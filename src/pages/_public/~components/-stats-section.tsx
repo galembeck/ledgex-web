@@ -5,7 +5,7 @@ import { fadeUp } from "@/lib/framer-variants";
 
 export function StatsSection() {
   return (
-    <section className="py-24" id="stats">
+    <section className="py-12 md:py-24" id="stats">
       <div className="mx-auto max-w-7xl px-6">
         <AnimatedSection className="grid grid-cols-2 gap-8 lg:grid-cols-4">
           {stats.map((stat) => (

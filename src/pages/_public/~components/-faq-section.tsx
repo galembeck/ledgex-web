@@ -8,7 +8,10 @@ export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="bg-muted/30 py-28 dark:bg-secondary-dark" id="faq">
+    <section
+      className="bg-muted/30 py-14 md:py-28 dark:bg-secondary-dark"
+      id="faq"
+    >
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader keyword="FAQ" title="Questions & Answers" />
 

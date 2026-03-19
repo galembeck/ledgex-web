@@ -7,7 +7,7 @@ export function PricingSection() {
   const { pricingPlans } = usePricingPlan();
 
   return (
-    <section className="py-28" id="pricing">
+    <section className="py-14 md:py-28" id="pricing">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
           description="Start with a 14-day free trial. No credit card required."

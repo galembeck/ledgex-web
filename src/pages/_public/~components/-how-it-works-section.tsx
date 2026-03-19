@@ -6,7 +6,7 @@ import { howItWorksSteps } from "@/constants/_public/how-it-works";
 export function HowItWorksSection() {
   return (
     <section
-      className="bg-muted/30 py-28 dark:bg-secondary-dark"
+      className="bg-muted/30 py-14 md:py-28 dark:bg-secondary-dark"
       id="how-it-works"
     >
       <div className="mx-auto max-w-7xl px-6">

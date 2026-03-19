@@ -6,7 +6,7 @@ import { testimonials } from "@/constants/_public/testimonials";
 export function TestimonialsSection() {
   return (
     <section
-      className="bg-muted/30 py-28 dark:bg-secondary-dark"
+      className="bg-muted/30 py-14 md:py-28 dark:bg-secondary-dark"
       id="testimonials"
     >
       <div className="mx-auto max-w-7xl px-6">

@@ -5,7 +5,7 @@ import { features } from "@/constants/_public/features";
 
 export function FeaturesSection() {
   return (
-    <section className="py-28" id="features">
+    <section className="py-14 md:py-28" id="features">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
           description="Everything you need to understand, optimize, and control your company's financial health."
