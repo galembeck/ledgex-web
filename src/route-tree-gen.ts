@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from "./pages/__root"
 import { Route as PublicLayoutRouteImport } from "./pages/_public/layout"
 import { Route as PublicIndexRouteImport } from "./pages/_public/index"
+import { Route as AuthSignInIndexRouteImport } from "./pages/_auth/sign-in/index"
 
 const PublicLayoutRoute = PublicLayoutRouteImport.update({
   id: "/_public",
@@ -21,28 +22,37 @@ const PublicIndexRoute = PublicIndexRouteImport.update({
   path: "/",
   getParentRoute: () => PublicLayoutRoute,
 } as any)
+const AuthSignInIndexRoute = AuthSignInIndexRouteImport.update({
+  id: "/_auth/sign-in/",
+  path: "/sign-in/",
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   "/": typeof PublicIndexRoute
+  "/sign-in/": typeof AuthSignInIndexRoute
 }
 export interface FileRoutesByTo {
   "/": typeof PublicIndexRoute
+  "/sign-in": typeof AuthSignInIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   "/_public": typeof PublicLayoutRouteWithChildren
   "/_public/": typeof PublicIndexRoute
+  "/_auth/sign-in/": typeof AuthSignInIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: "/"
+  fullPaths: "/" | "/sign-in/"
   fileRoutesByTo: FileRoutesByTo
-  to: "/"
-  id: "__root__" | "/_public" | "/_public/"
+  to: "/" | "/sign-in"
+  id: "__root__" | "/_public" | "/_public/" | "/_auth/sign-in/"
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   PublicLayoutRoute: typeof PublicLayoutRouteWithChildren
+  AuthSignInIndexRoute: typeof AuthSignInIndexRoute
 }
 
 declare module "@tanstack/react-router" {
@@ -61,6 +71,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof PublicIndexRouteImport
       parentRoute: typeof PublicLayoutRoute
     }
+    "/_auth/sign-in/": {
+      id: "/_auth/sign-in/"
+      path: "/sign-in"
+      fullPath: "/sign-in/"
+      preLoaderRoute: typeof AuthSignInIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -78,6 +95,7 @@ const PublicLayoutRouteWithChildren = PublicLayoutRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   PublicLayoutRoute: PublicLayoutRouteWithChildren,
+  AuthSignInIndexRoute: AuthSignInIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

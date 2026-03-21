@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { LineChart } from "lucide-react";
 import { footerItems } from "@/constants/_components/footer";
+import { Logo } from "./ui/logo";
 
 export function Footer() {
   return (
@@ -8,15 +8,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-12 grid grid-cols-2 gap-8 md:grid-cols-4">
           <div className="col-span-2 md:col-span-1">
-            <Link className="flex items-center gap-2" to="/">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-purple">
-                <LineChart className="h-5 w-5 text-white" />
-              </div>
-
-              <span className="font-semibold text-black text-xl dark:text-white">
-                LedgeX
-              </span>
-            </Link>
+            <Logo />
 
             <p className="mt-4 text-muted-foreground text-sm dark:text-secondary-muted-foreground">
               AI-powered financial intelligence for modern finance teams.

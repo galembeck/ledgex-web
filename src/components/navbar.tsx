@@ -1,10 +1,11 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, LineChart, Menu, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { navItems } from "@/constants/_components/navbar";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
+import { Logo } from "./ui/logo";
 
 export function Navbar() {
   const navigate = useNavigate();
@@ -30,15 +31,7 @@ export function Navbar() {
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link className="flex items-center gap-2" to="/">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-purple">
-            <LineChart className="h-5 w-5 text-white" />
-          </div>
-
-          <span className="font-semibold text-black text-xl dark:text-white">
-            LedgeX
-          </span>
-        </Link>
+        <Logo />
 
         <nav className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => (
@@ -55,7 +48,7 @@ export function Navbar() {
         <div className="hidden items-center gap-3 md:flex">
           <Button
             className="cursor-pointer text-muted-foreground text-sm hover:text-black dark:text-secondary-muted-foreground dark:hover:text-white"
-            onClick={() => navigate({ to: "/" })}
+            onClick={() => navigate({ to: "/sign-in" })}
             variant="ghost"
           >
             Sign In
